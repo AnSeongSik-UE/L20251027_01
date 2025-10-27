@@ -36,19 +36,44 @@ int SDL_main(int argc, char* argv[])
 			SDL_SetRenderDrawColor(MyRenderer, 255, 255, 255, 0);
 			SDL_RenderClear(MyRenderer);
 
-			SDL_FRect MyRect = { 0.0f ,0.0f , 0.0f , 0.0f};
-			for (int i = 0; i < 100; ++i)
+			//int Radius = 100;
+			//for(int j = 0;j<100;j++)
 			{
 				SDL_SetRenderDrawColor(MyRenderer, SDL_rand(256), SDL_rand(256), SDL_rand(256), 0);
-				Sint32 RectX = SDL_rand(640);
-				Sint32 RectY = SDL_rand(480);
-				Sint32 RectW = SDL_rand((640 - RectX));
-				Sint32 RectH = SDL_rand((480 - RectY));
-				MyRect = { (float)RectX ,(float)RectY , (float)RectW , (float)RectH };
-				
-				SDL_RenderFillRect(MyRenderer, &MyRect);
+
+				//int Radius = SDL_rand(110) + 10;
+				//int CenterX = SDL_rand(160) + 160;
+				//int CenterY = SDL_rand(120) + 120;
+				//for (int Degree = 0; Degree <= 360; Degree++)
+				//{
+				//	int CircleX = SDL_cos((float)Degree * SDL_PI_F / 180.0f) * Radius + CenterX;
+				//	int CircleY = SDL_sin((float)Degree * SDL_PI_F / 180.0f) * Radius + CenterY;
+				//	SDL_RenderPoint(MyRenderer, CircleX, CircleY);
+				//}
+
+				float Radius = 200.0f;
+				float CenterX = 320.0f;
+				float CenterY = 240.0f;
+				for (int Degree = 20; Degree <= 360; Degree += 20)
+				{
+					float OldCircleX = (float)SDL_cos((float)(Degree - 20) * SDL_PI_F / 180.0f) * Radius + CenterX;
+					float OldCircleY = (float)SDL_sin((float)(Degree - 20) * SDL_PI_F / 180.0f) * Radius + CenterY;
+
+					float CircleX = (float)SDL_cos((float)Degree * SDL_PI_F / 180.0f) * Radius + CenterX;
+					float CircleY = (float)SDL_sin((float)Degree * SDL_PI_F / 180.0f) * Radius + CenterY;
+					//언리얼 Sphere 표현 방식
+					SDL_RenderLine(MyRenderer, OldCircleX, OldCircleY, CircleX, CircleY);
+				}
+
+				//for (float i = 0; i < 360; i += 0.1f)
+				//{
+				//	float CircleX = (SDL_cos(i) * Radius) + CenterX;
+				//	float CircleY = (SDL_sin(i) * Radius) + CenterY;
+				//	SDL_RenderPoint(MyRenderer, CircleX, CircleY);
+				//}
+
 			}
-			//화면 업데이트, 사각형 100개를 랜덤으로 그려주세요.
+			
 			SDL_RenderPresent(MyRenderer);
 		}
 	}
