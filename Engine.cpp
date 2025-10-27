@@ -15,6 +15,7 @@ FEngine::~FEngine()
 
 void FEngine::Init()
 {
+	srand((unsigned int)time(nullptr));
 	World = new UWorld;
 
 	std::ifstream MapFile("Level01.map");
@@ -78,6 +79,8 @@ void FEngine::Init()
 	World->SortActor();
 
 	MapFile.close();
+
+	World->SpawnActor(new AGameMode());
 }
 void FEngine::Run()
 {

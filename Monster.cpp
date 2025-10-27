@@ -5,7 +5,6 @@ AMonster::AMonster()
 	ZOrder = 1001;
 	bIsCollision = true;
 	bIsOverlap = true;
-	srand((unsigned int)time(nullptr));
 }
 AMonster::~AMonster()
 {

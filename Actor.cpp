@@ -21,13 +21,14 @@ void AActor::Render()
 }
 bool AActor::CheckCollision(const AActor* OtherActor)
 {
-	if(this != OtherActor)
+	if (OtherActor->bIsOverlap)
 	{
-		if (bIsCollision && OtherActor->bIsCollision &&
-			this->Location == OtherActor->Location) //영역 계산
-		{
-			return true;
-		}
+		return false;
+	}
+	if (this != OtherActor && bIsCollision && OtherActor->bIsCollision &&
+		this->Location == OtherActor->Location) //영역 계산
+	{
+		return true;
 	}
 	return false;
 }

@@ -13,6 +13,7 @@
 #include "Monster.h"
 #include "Goal.h"
 #include "Actor.h"
+#include "GameMode.h"
 
 class UWorld;
 
