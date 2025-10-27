@@ -12,8 +12,6 @@ AGameMode::~AGameMode()
 void AGameMode::Tick()
 {
 	AActor* Player = nullptr;
-	AActor* Monster = nullptr;
-	AActor* Goal = nullptr;
 
 	std::vector<AActor*> AllActors;
 	GEngine->GetWorld()->GetAllActors(AllActors);
